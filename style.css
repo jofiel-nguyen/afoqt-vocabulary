@@ -1,7 +1,35 @@
-    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
-    .card { background: white; border-radius: 12px; padding: 20px; 
-            margin: 10px auto; width: 80%; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            cursor: pointer; transition: transform 0.2s; }
-    .card:hover { transform: scale(1.02); }
-    .word { font-size: 1.5em; font-weight: bold; color: #333; }
-    .definition { display: none; margin-top: 10px; color: #555; }
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f9;
+  text-align: center;
+  padding: 20px;
+}
+
+#shuffleBtn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card.matched {
+  background: #a0e7a0;
+  pointer-events: none;
+}
