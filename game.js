@@ -1,4 +1,3 @@
-// Assume words[] comes from word.js
 const board = document.getElementById("game-board");
 const shuffleBtn = document.getElementById("shuffleBtn");
 
@@ -14,32 +13,31 @@ function startGame() {
   board.innerHTML = "";
   cards = [];
 
-  // Create word cards
+  // Create word + definition cards
   words.forEach(item => {
     cards.push({ text: item.word, pair: item.def, type: "word" });
     cards.push({ text: item.def, pair: item.word, type: "def" });
   });
 
-  // Shuffle cards
+  // Shuffle
   shuffle(cards);
 
   // Render
-  cards.forEach((card, index) => {
+  cards.forEach(card => {
     const div = document.createElement("div");
     div.classList.add("card");
     div.dataset.text = card.text;
     div.dataset.pair = card.pair;
-    div.dataset.type = card.type;
     div.innerText = card.text;
 
     div.addEventListener("click", () => selectCard(div));
-
     board.appendChild(div);
   });
 }
 
 function selectCard(card) {
-  if (firstPick && secondPick) return; // prevent more than 2 picks
+  if (firstPick && secondPick) return; // only 2 at a time
+  if (card.classList.contains("matched")) return; // skip matched cards
 
   card.classList.add("selected");
 
@@ -48,10 +46,10 @@ function selectCard(card) {
   } else {
     secondPick = card;
 
-    // Check match
+    // Check for match
     if (
-      firstPick.dataset.text === secondPick.dataset.pair ||
-      secondPick.dataset.text === firstPick.dataset.pair
+      firstPick.dataset.pair === secondPick.dataset.text ||
+      secondPick.dataset.pair === firstPick.dataset.text
     ) {
       firstPick.classList.add("matched");
       secondPick.classList.add("matched");
@@ -67,6 +65,3 @@ function selectCard(card) {
 }
 
 shuffleBtn.addEventListener("click", startGame);
-
-// Start game on load
-startGame();
