@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>AFOQT Vocabulary Flashcards</title>
-  <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <title>AFOQT Vocabulary Flashcards</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <h1>AFOQT Vocabulary Game</h1>
-  <p>Click two cards to match the word with its definition.</p>
+    <h1>AFOQT Vocabulary Flashcards</h1>
 
-  <button id="shuffleBtn">Shuffle & Start Game</button>
-  <div id="game-board"></div>
+    <div id="word-list-container"></div>
+    <button id="start-btn">Start Game</button>
 
-  <script src="words.js"></script>
-  <script src="game.js"></script>
+    <div id="game-section">
+        <div id="game-info">
+            <div id="score">Score: 0</div>
+            <div id="message"></div>
+        </div>
+        <button id="shuffleBtn">Shuffle Cards</button>
+        <div id="game-board"></div>
+    </div>
+
+    <script src="./words.js"></script>
+    <script src="./game.js"></script>
 </body>
+</html>
